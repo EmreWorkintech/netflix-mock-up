@@ -40,3 +40,17 @@
 .read-the-docs {
   color: #888;
 }
+
+.control_panel {
+  position: fixed;
+  right: 1rem;
+  bottom:1rem;
+  display: flex;
+  gap: 2rem;
+}
+
+
+.control_panel a {
+  color: white;
+  text-decoration: none;
+}

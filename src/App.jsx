@@ -3,13 +3,24 @@ import { Link, Route, Switch } from "react-router-dom/cjs/react-router-dom.min";
 import Login from "./pages/Login";
 import Welcome from "./pages/Welcome";
 import Browse from "./pages/Browse";
+import styled from "styled-components";
+
+const Container = styled.div`
+  background: #262626;
+  width: 100vw;
+  min-height: 100vh;
+`;
+
+const Landing = styled.p`
+  margin: 0;
+`;
 
 function App() {
   return (
-    <>
+    <Container>
       <Switch>
         <Route exact path="/">
-          <p>Landing Page</p>
+          <Landing>Landing Page</Landing>
         </Route>
         <Route path="/login">
           <Login />
@@ -27,7 +38,7 @@ function App() {
         <Link to="/welcome">Welcome</Link>
         <Link to="/browse">Browse</Link>
       </div>
-    </>
+    </Container>
   );
 }
 

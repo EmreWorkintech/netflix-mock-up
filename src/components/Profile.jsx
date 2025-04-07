@@ -1,10 +1,17 @@
 import React from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import styled from "styled-components";
+
+const Avatar = styled.img`
+  width: 100%;
+  border-radius: 0.6rem;
+  border: 4px solid rgba(0, 0, 0, 0);
+`;
 
 const ProfileCard = styled.div`
   width: 180px;
   cursor: pointer;
-  &:hover img {
+  &:hover ${Avatar} {
     border: 4px solid white;
   }
   &:hover h2 {
@@ -12,11 +19,6 @@ const ProfileCard = styled.div`
   }
 `;
 
-const Avatar = styled.img`
-  width: 100%;
-  border-radius: 0.6rem;
-  border: 4px solid rgba(0, 0, 0, 0);
-`;
 const Name = styled.h2`
   text-align: center;
   color: darkgray;
@@ -24,10 +26,18 @@ const Name = styled.h2`
 `;
 
 function Profile(props) {
-  const { item } = props;
+  //hooklar
+  const { item, setActiveProfile } = props;
+  const history = useHistory();
 
+  //helper
+  function handleClick() {
+    setActiveProfile(item);
+    history.push("/browse");
+  }
+  //template
   return (
-    <ProfileCard>
+    <ProfileCard onClick={handleClick}>
       <Avatar src={item.avatar} />
       <Name>{item.name}</Name>
     </ProfileCard>

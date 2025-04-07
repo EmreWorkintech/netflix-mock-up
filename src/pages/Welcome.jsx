@@ -27,11 +27,12 @@ const Button = styled.button`
   font-size: 1rem;
 `;
 
-function Welcome() {
+function Welcome(props) {
+  const { setActiveProfile } = props;
   return (
     <Container>
       <Title>Who's watching?</Title>
-      <ProfileList />
+      <ProfileList setActiveProfile={setActiveProfile} />
       <Button>Manage Profiles</Button>
     </Container>
   );

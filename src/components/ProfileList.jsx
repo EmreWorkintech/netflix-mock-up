@@ -8,11 +8,13 @@ const ProfileContainer = styled.div`
   justify-content: center;
   gap: 2.5rem;
 `;
-function ProfileList() {
+function ProfileList(props) {
+  const { setActiveProfile } = props;
+
   return (
     <ProfileContainer>
       {profiles.map((item, index) => (
-        <Profile item={item} key={index} />
+        <Profile item={item} key={index} setActiveProfile={setActiveProfile} />
       ))}
     </ProfileContainer>
   );

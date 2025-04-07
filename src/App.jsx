@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Welcome from "./pages/Welcome";
 import Browse from "./pages/Browse";
 import styled from "styled-components";
+import { useState } from "react";
 
 const Container = styled.div`
   background: #262626;
@@ -16,6 +17,12 @@ const Landing = styled.p`
 `;
 
 function App() {
+  //hooklar
+  const [activeProfile, setActiveProfile] = useState(null);
+
+  //helper fonksiyonlar
+
+  //template: JSX
   return (
     <Container>
       <Switch>
@@ -26,10 +33,10 @@ function App() {
           <Login />
         </Route>
         <Route path="/welcome">
-          <Welcome />
+          <Welcome setActiveProfile={setActiveProfile} />
         </Route>
         <Route path="/browse">
-          <Browse />
+          <Browse activeProfile={activeProfile} />
         </Route>
       </Switch>
       <div className="control_panel">

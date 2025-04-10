@@ -1,12 +1,38 @@
-# React + Vite
+# KONULAR
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sprint 5-7 Neler Öğrendik?
 
-Currently, two official plugins are available:
+Axios  
+Promise  
+Component  
+DOM nedir?  
+DOM eventleri  
+DOM manipülasyonu
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Text
 
-## Expanding the ESLint configuration
+React nedir?  
+imperative vs declarative  
+useState hook'u  
+useEffect ve component lifecycle  
+component yapısı
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+prop kavramı
+
+state lifting up  
+JSX nedir?  
+Kütüphane ve package yönetimi  
+import & export yapma ve modül kavramı  
+styled-components  
+reactstrap
+
+react-router-dom@5  
+Form Elementleri  
+Form yönetimi  
+Validasyonu  
+Error handling  
+E2E testleri ve Cypress  
+test türleri ve test mantığını  
+vite ile proje oluşturma
+
+[TLDRAW Linki](https://www.tldraw.com/f/GH0Cx_erdV9uiPj517jkB?d=v293.108.2255.1659.nouUnNVi5F0I31tfy3mOq)

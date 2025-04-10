@@ -1,14 +1,16 @@
-import React, { use, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import background from "../assets/images/AuthenticationPage.png";
 import logo from "../assets/images/logo_sm.png";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import axios from "axios";
 
 const Container = styled.div`
   width: 100%;
   height: 100vh;
   background-image: url(${background});
   background-size: cover;
+  color: white;
 `;
 
 const Header = styled.header`
@@ -76,24 +78,52 @@ const initialErrors = {
 };
 
 function Login() {
+  //hooklar
   const [formData, setFormData] = useState(initialFormValues);
   const [errors, setErrors] = useState(initialErrors);
   const [isValid, setIsValid] = useState(false);
   const history = useHistory();
   //isValid kontrolü-useEffect(()=>{...}, [formData])
+  useEffect(() => {
+    if (validateEmail(formData.email)) {
+      setIsValid(true);
+    } else {
+      setIsValid(false);
+    }
+  }, [formData]);
+
+  //helper functionlar
+  function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
 
   function handleChange(event) {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
-    //validation controlleri
+    if (name == "email") {
+      if (validateEmail(value)) {
+        setErrors({ ...errors, ["email"]: "" });
+      } else {
+        setErrors({ ...errors, ["email"]: "Geçerli email adresi giriniz" });
+      }
+    }
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    history.push("/welcome");
-    //axios
+    axios
+      .post("https://reqres.in/api/users", formData)
+      .then((res) => {
+        console.log(res.data);
+        history.push("/welcome");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   }
 
+  //template JSX
   return (
     <Container>
       <Header>
@@ -106,14 +136,19 @@ function Login() {
           type="email"
           placeholder="Email or phone number"
           onChange={handleChange}
+          data-cy="email-input"
         />
+        <p>{errors.email}</p>
         <Input
           name="password"
           type="password"
           placeholder="Password"
           onChange={handleChange}
+          data-cy="pass-input"
         />
-        <Button disabled={!isValid}>Sign In</Button>
+        <Button disabled={!isValid} data-cy="submit-button">
+          Sign In
+        </Button>
       </Form>
     </Container>
   );
